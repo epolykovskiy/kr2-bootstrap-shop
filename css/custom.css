@@ -17,6 +17,28 @@
   --bs-focus-ring-color: rgba(var(--shop-accent-rgb), 0.5);
 }
 
+/* Цвета тёмной темы */
+[data-bs-theme="dark"] {
+  --bs-link-color: var(--shop-accent);
+  --bs-link-color-rgb: var(--shop-accent-rgb);
+  --bs-link-hover-color: #fff0a0;
+  --bs-link-hover-color-rgb: 255, 240, 160;
+}
+
+[data-bs-theme="dark"] .accordion {
+  --bs-accordion-active-color: var(--bs-emphasis-color);
+}
+
+[data-bs-theme="dark"] .navbar.bg-dark {
+  background-color: #111111 !important;
+  border-bottom: 1px solid var(--bs-border-color);
+}
+
+[data-bs-theme="dark"] footer.bg-dark {
+  background-color: #111111 !important;
+  border-top: 1px solid var(--bs-border-color);
+}
+
 .btn-primary {
   --bs-btn-color: var(--shop-on-accent);
   --bs-btn-bg: var(--shop-accent);
