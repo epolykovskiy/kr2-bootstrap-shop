@@ -12,72 +12,82 @@
   <link rel="stylesheet" href="css/custom.css">
 </head>
 <body>
-  <header class="bg-primary text-white py-4">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-12 col-md-8">
-          <p class="h3 mb-1">ShopProject</p>
-          <p class="mb-0 opacity-75">
-            Учебный интернет-магазин на Bootstrap
-          </p>
-        </div>
-        <div class="col-12 col-md-4 text-md-end mt-3 mt-md-0">
-          <span class="badge bg-light text-primary">
-            КР №2
-          </span>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">ShopProject</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#mainNavbar"
+          aria-controls="mainNavbar"
+          aria-expanded="false"
+          aria-label="Переключить навигацию"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Главная</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="catalog.html">Каталог</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="product.html">Товар</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="order.html">Заявка</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Дополнительно
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="catalog.html">Все товары</a></li>
+                <li><a class="dropdown-item" href="order.html">Оформить заявку</a></li>
+                <li><a class="dropdown-item" href="index.html#popular">Популярное</a></li>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
+    </nav>
   </header>
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">ShopProject</a>
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#mainNavbar"
-        aria-controls="mainNavbar"
-        aria-expanded="false"
-        aria-label="Переключить навигацию"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="mainNavbar">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="index.html">Главная</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="catalog.html">Каталог</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="product.html">Товар</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="order.html">Заявка</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
 
   <main>
     <section class="container my-5">
       <div class="row align-items-center g-4">
         <div class="col-12 col-lg-6">
+          <span class="badge bg-warning text-dark mb-3">Новая коллекция</span>
           <h1 class="display-5 fw-bold">
             Учебный интернет-магазин
           </h1>
           <p class="lead text-muted">
             Домашняя обувь, сапоги и носки с фирменным логотипом.
-            Страница построена на Bootstrap-сетке, адаптивных колонках
-            и utility-классах.
+            Выберите товар в каталоге и оставьте заявку — менеджер свяжется с вами.
           </p>
-          <a class="btn btn-primary btn-lg" href="catalog.html">
-            Перейти в каталог
-          </a>
+          <div class="d-flex flex-wrap gap-2">
+            <a class="btn btn-primary btn-lg" href="catalog.html">
+              Перейти в каталог
+            </a>
+            <button
+              class="btn btn-outline-secondary btn-lg"
+              type="button"
+              data-bs-toggle="modal"
+              data-bs-target="#orderModal"
+            >
+              Быстрая заявка
+            </button>
+          </div>
         </div>
         <div class="col-12 col-lg-6">
           <img
@@ -128,63 +138,153 @@
       </div>
       <div class="row g-4">
         <div class="col-12 col-md-6 col-lg-4">
-          <div class="border rounded h-100 p-4">
-            <span class="badge bg-warning text-dark mb-3">Хит</span>
-            <h3 class="h5">Тапочки меховые «1С»</h3>
-            <p class="text-muted">
-              Тёплые жёлтые тапочки из войлока с вышитым логотипом.
-            </p>
-            <p class="fw-bold mb-3">1000 руб.</p>
-            <a class="btn btn-primary" href="product.html">
-              Подробнее
-            </a>
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="images/tapchan.webp" alt="Жёлтые меховые тапочки с логотипом 1С">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h3 class="card-title h5">Тапочки меховые «1С»</h3>
+                <span class="badge bg-warning text-dark">Хит</span>
+              </div>
+              <p class="card-text text-muted">
+                Тёплые жёлтые тапочки из войлока с вышитым логотипом.
+              </p>
+              <p class="fw-bold fs-5 mt-auto">1000 руб.</p>
+              <div class="d-flex gap-2">
+                <a class="btn btn-primary" href="product.html">Подробнее</a>
+                <button
+                  class="btn btn-outline-primary"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#orderModal"
+                >
+                  Заказать
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
-          <div class="border rounded h-100 p-4">
-            <span class="badge bg-success mb-3">Новинка</span>
-            <h3 class="h5">Сабо «1С»</h3>
-            <p class="text-muted">
-              Лёгкие жёлтые сабо для дома, сада и прогулок.
-            </p>
-            <p class="fw-bold mb-3">1500 руб.</p>
-            <a class="btn btn-primary" href="product.html">
-              Подробнее
-            </a>
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="images/kroxi.webp" alt="Жёлтые сабо с логотипом 1С">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h3 class="card-title h5">Сабо «1С»</h3>
+                <span class="badge bg-success">Новинка</span>
+              </div>
+              <p class="card-text text-muted">
+                Лёгкие жёлтые сабо для дома, сада и прогулок.
+              </p>
+              <p class="fw-bold fs-5 mt-auto">1500 руб.</p>
+              <div class="d-flex gap-2">
+                <a class="btn btn-primary" href="product.html">Подробнее</a>
+                <button
+                  class="btn btn-outline-primary"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#orderModal"
+                >
+                  Заказать
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
-          <div class="border rounded h-100 p-4">
-            <span class="badge bg-danger mb-3">Скидка</span>
-            <h3 class="h5">Резиновые сапоги «1С»</h3>
-            <p class="text-muted">
-              Яркие непромокаемые сапоги для дождливой погоды.
-            </p>
-            <p class="fw-bold mb-3">2000 руб.</p>
-            <a class="btn btn-primary" href="product.html">
-              Подробнее
-            </a>
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="images/sapogi.webp" alt="Жёлтые резиновые сапоги с логотипом 1С">
+            <div class="card-body d-flex flex-column">
+              <div class="d-flex justify-content-between align-items-start mb-3">
+                <h3 class="card-title h5">Резиновые сапоги «1С»</h3>
+                <span class="badge bg-danger">Скидка</span>
+              </div>
+              <p class="card-text text-muted">
+                Яркие непромокаемые сапоги для дождливой погоды.
+              </p>
+              <p class="fw-bold fs-5 mt-auto">2000 руб.</p>
+              <div class="d-flex gap-2">
+                <a class="btn btn-primary" href="product.html">Подробнее</a>
+                <button
+                  class="btn btn-outline-primary"
+                  type="button"
+                  data-bs-toggle="modal"
+                  data-bs-target="#orderModal"
+                >
+                  Заказать
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
+  <div
+    class="modal fade"
+    id="orderModal"
+    tabindex="-1"
+    aria-labelledby="orderModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title h5" id="orderModalLabel">
+            Быстрая заявка
+          </h2>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Закрыть"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted">
+            Оставьте контактные данные, и менеджер свяжется с вами.
+          </p>
+          <form id="modal-form" action="#" method="post">
+            <div class="mb-3">
+              <label for="modal-name" class="form-label">Имя</label>
+              <input id="modal-name" name="name" type="text" class="form-control" required>
+            </div>
+            <div class="mb-3">
+              <label for="modal-phone" class="form-label">Телефон</label>
+              <div class="input-group">
+                <span class="input-group-text">+7</span>
+                <input id="modal-phone" name="phone" type="tel" class="form-control" placeholder="900 000-00-00" required>
+              </div>
+            </div>
+            <div class="form-check mb-3">
+              <input id="modal-agree" name="agreement" class="form-check-input" type="checkbox" required>
+              <label class="form-check-label" for="modal-agree">
+                Согласен на обработку данных
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Закрыть
+          </button>
+          <button type="submit" class="btn btn-primary" form="modal-form">
+            Отправить
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <footer class="bg-dark text-white py-4 mt-5">
     <div class="container">
       <div class="row align-items-center g-3">
         <div class="col-12 col-md-6">
-          <p class="mb-0">
-            &copy; 2026 ShopProject. Учебный проект.
-          </p>
+          <p class="mb-0">&copy; 2026 ShopProject. Учебный проект.</p>
+          <p class="mb-0 small opacity-75">Дисциплина: Фронтенд и бэкенд разработка</p>
         </div>
         <div class="col-12 col-md-6 text-md-end">
-          <a class="text-white text-decoration-none me-3" href="catalog.html">
-            Каталог
-          </a>
-          <a class="text-white text-decoration-none" href="order.html">
-            Заявка
-          </a>
+          <a class="text-white text-decoration-none me-3" href="catalog.html">Каталог</a>
+          <a class="text-white text-decoration-none" href="order.html">Заявка</a>
         </div>
       </div>
     </div>
