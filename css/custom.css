@@ -1,0 +1,9 @@
+body {
+  min-height: 100vh;
+}
+
+.hero-image {
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+}
