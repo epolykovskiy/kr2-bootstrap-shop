@@ -1,3 +1,107 @@
+/* ===============================
+   1. Фирменные цвета поверх Bootstrap
+   =============================== */
+
+:root {
+  --shop-accent: #ffdd00;
+  --shop-accent-dark: #f5c800;
+  --shop-accent-rgb: 255, 221, 0;
+  --shop-on-accent: #222222;
+
+  --bs-primary: var(--shop-accent);
+  --bs-primary-rgb: var(--shop-accent-rgb);
+  --bs-link-color: #222222;
+  --bs-link-color-rgb: 34, 34, 34;
+  --bs-link-hover-color: #000000;
+  --bs-link-hover-color-rgb: 0, 0, 0;
+  --bs-focus-ring-color: rgba(var(--shop-accent-rgb), 0.5);
+}
+
+.btn-primary {
+  --bs-btn-color: var(--shop-on-accent);
+  --bs-btn-bg: var(--shop-accent);
+  --bs-btn-border-color: var(--shop-accent);
+  --bs-btn-hover-color: var(--shop-on-accent);
+  --bs-btn-hover-bg: var(--shop-accent-dark);
+  --bs-btn-hover-border-color: var(--shop-accent-dark);
+  --bs-btn-active-color: var(--shop-on-accent);
+  --bs-btn-active-bg: var(--shop-accent-dark);
+  --bs-btn-active-border-color: var(--shop-accent-dark);
+  --bs-btn-disabled-color: var(--shop-on-accent);
+  --bs-btn-disabled-bg: var(--shop-accent);
+  --bs-btn-disabled-border-color: var(--shop-accent);
+  --bs-btn-focus-shadow-rgb: var(--shop-accent-rgb);
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--bs-emphasis-color);
+  --bs-btn-border-color: var(--shop-accent-dark);
+  --bs-btn-hover-color: var(--shop-on-accent);
+  --bs-btn-hover-bg: var(--shop-accent);
+  --bs-btn-hover-border-color: var(--shop-accent);
+  --bs-btn-active-color: var(--shop-on-accent);
+  --bs-btn-active-bg: var(--shop-accent-dark);
+  --bs-btn-active-border-color: var(--shop-accent-dark);
+  --bs-btn-focus-shadow-rgb: var(--shop-accent-rgb);
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+  border-color: var(--shop-accent-dark);
+  box-shadow: 0 0 0 0.25rem rgba(var(--shop-accent-rgb), 0.35);
+}
+
+.form-check-input:checked {
+  background-color: var(--shop-accent-dark);
+  border-color: var(--shop-accent-dark);
+}
+
+.form-switch .form-check-input:focus:not(:checked) {
+  --bs-form-switch-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%23f5c800'/%3e%3c/svg%3e");
+}
+
+.dropdown-menu {
+  --bs-dropdown-link-active-color: var(--shop-on-accent);
+  --bs-dropdown-link-active-bg: var(--shop-accent);
+}
+
+.accordion {
+  --bs-accordion-active-color: var(--shop-on-accent);
+  --bs-accordion-active-bg: rgba(var(--shop-accent-rgb), 0.35);
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--shop-accent-rgb), 0.35);
+}
+
+.nav-tabs .nav-link {
+  color: var(--bs-body-color);
+}
+
+.nav-tabs .nav-link.active {
+  border-top: 3px solid var(--shop-accent);
+}
+
+/* ===============================
+   2. Навигация
+   =============================== */
+
+.navbar-brand {
+  color: var(--shop-accent);
+  letter-spacing: 0.02em;
+}
+
+.navbar-dark .navbar-brand:hover,
+.navbar-dark .navbar-brand:focus {
+  color: var(--shop-accent-dark);
+}
+
+.navbar-dark .nav-link.active {
+  color: var(--shop-accent);
+}
+
+/* ===============================
+   3. Базовые стили и hero-блок
+   =============================== */
+
 body {
   min-height: 100vh;
 }
@@ -14,9 +118,23 @@ body {
   border-radius: var(--bs-border-radius);
 }
 
+/* ===============================
+   4. Карточки товаров
+   =============================== */
+
 .card-img-top {
   height: 220px;
   object-fit: cover;
+}
+
+.card.shadow-sm {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card.shadow-sm:hover,
+.card.shadow-sm:focus-within {
+  transform: translateY(-4px);
+  box-shadow: var(--bs-box-shadow) !important;
 }
 
 .product-image {
@@ -25,6 +143,14 @@ body {
   object-fit: cover;
 }
 
+.quantity-group {
+  max-width: 180px;
+}
+
+/* ===============================
+   5. Адаптивность
+   =============================== */
+
 @media (min-width: 992px) {
   .catalog-filters {
     position: sticky;
@@ -32,12 +158,19 @@ body {
   }
 }
 
-.quantity-group {
-  max-width: 180px;
-}
-
 @media (max-width: 575.98px) {
   .hero-image {
     height: 240px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card.shadow-sm {
+    transition: none;
+  }
+
+  .card.shadow-sm:hover,
+  .card.shadow-sm:focus-within {
+    transform: none;
   }
 }
