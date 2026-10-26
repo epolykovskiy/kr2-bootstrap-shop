@@ -18,6 +18,17 @@
 - Git;
 - GitHub.
 
+## Подключение Bootstrap
+
+В проекте Bootstrap 5.3.8 подключён локально, без CDN. Файлы фреймворка (compiled-версия) размещены в папке `vendor/bootstrap/`.
+
+Используются:
+
+- `vendor/bootstrap/css/bootstrap.min.css`;
+- `vendor/bootstrap/js/bootstrap.bundle.min.js`.
+
+Файл `css/custom.css` подключается после Bootstrap, чтобы переопределять отдельные стили проекта.
+
 ## Структура проекта
 
 ```text
@@ -29,6 +40,12 @@ kr2-bootstrap-shop/
 ├── css/
 │   └── custom.css
 ├── images/
+├── vendor/
+│   └── bootstrap/
+│       ├── css/
+│       │   └── bootstrap.min.css
+│       └── js/
+│           └── bootstrap.bundle.min.js
 ├── README.md
 └── .gitignore
 ```
@@ -39,6 +56,7 @@ kr2-bootstrap-shop/
 - `order.html` — форма заявки;
 - `css/custom.css` — дополнительные стили проекта;
 - `images/` — изображения проекта;
+- `vendor/bootstrap/` — локальные файлы Bootstrap;
 - `README.md` — описание проекта.
 
 ## Автор
