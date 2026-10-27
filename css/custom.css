@@ -18,3 +18,10 @@ body {
   max-height: 480px;
   object-fit: cover;
 }
+
+@media (min-width: 992px) {
+  .catalog-filters {
+    position: sticky;
+    top: 1rem;
+  }
+}

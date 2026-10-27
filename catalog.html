@@ -72,175 +72,299 @@
       Выберите товар из каталога и нажмите «Заказать», чтобы оставить быструю заявку.
     </div>
 
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1 class="h2 mb-0">Каталог товаров</h1>
-      <a class="btn btn-outline-primary" href="order.html">
-        Оставить заявку
-      </a>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-4">
+      <h1 class="h2 mb-0">
+        Каталог товаров
+        <span class="badge bg-secondary fs-6 align-middle" id="products-count">6</span>
+      </h1>
+      <div class="d-flex flex-wrap gap-2">
+        <button
+          class="btn btn-outline-secondary d-lg-none"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#catalogFilters"
+          aria-controls="catalogFilters"
+        >
+          Фильтры
+        </button>
+        <label class="visually-hidden" for="catalog-sort">Сортировка</label>
+        <select class="form-select w-auto" id="catalog-sort" name="sort">
+          <option value="default">По умолчанию</option>
+          <option value="price-asc">Сначала дешевле</option>
+          <option value="price-desc">Сначала дороже</option>
+        </select>
+      </div>
     </div>
 
     <div class="row g-4">
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <img class="card-img-top" src="images/tapchan.webp" alt="Жёлтые меховые тапочки с логотипом 1С">
-          <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h2 class="card-title h5">Тапочки меховые «1С»</h2>
-              <span class="badge bg-warning text-dark">Хит</span>
-            </div>
-            <p class="card-text text-muted">
-              Тёплые жёлтые тапочки из войлока с вышитым логотипом.
-            </p>
-            <p class="fw-bold fs-5 mt-auto">1000 руб.</p>
-            <div class="d-flex gap-2">
-              <a class="btn btn-primary" href="product.html">Подробнее</a>
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#orderModal"
-                data-product="product-1"
-              >
-                Заказать
-              </button>
-            </div>
+      <div class="col-12 col-lg-3">
+        <aside
+          class="offcanvas-lg offcanvas-start catalog-filters"
+          tabindex="-1"
+          id="catalogFilters"
+          aria-labelledby="catalogFiltersLabel"
+        >
+          <div class="offcanvas-header">
+            <h2 class="offcanvas-title h5" id="catalogFiltersLabel">Фильтры</h2>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              data-bs-target="#catalogFilters"
+              aria-label="Закрыть"
+            ></button>
           </div>
-        </div>
+          <div class="offcanvas-body">
+            <form class="card card-body shadow-sm w-100" id="filters-form" action="#" method="get">
+              <h2 class="h5 d-none d-lg-block">Фильтры</h2>
+
+              <fieldset class="mb-3">
+                <legend class="fs-6 fw-semibold">Категория</legend>
+                <div class="form-check">
+                  <input id="category-slippers" name="category" class="form-check-input" type="checkbox" value="slippers">
+                  <label class="form-check-label" for="category-slippers">Тапочки</label>
+                </div>
+                <div class="form-check">
+                  <input id="category-shoes" name="category" class="form-check-input" type="checkbox" value="shoes">
+                  <label class="form-check-label" for="category-shoes">Обувь</label>
+                </div>
+                <div class="form-check">
+                  <input id="category-socks" name="category" class="form-check-input" type="checkbox" value="socks">
+                  <label class="form-check-label" for="category-socks">Носки</label>
+                </div>
+              </fieldset>
+
+              <fieldset class="mb-3">
+                <legend class="fs-6 fw-semibold">Цена</legend>
+                <div class="input-group mb-2">
+                  <label class="input-group-text" for="price-from">От</label>
+                  <input id="price-from" name="price-from" class="form-control" type="number" min="0" step="100" placeholder="0">
+                  <span class="input-group-text">₽</span>
+                </div>
+                <div class="input-group">
+                  <label class="input-group-text" for="price-to">До</label>
+                  <input id="price-to" name="price-to" class="form-control" type="number" min="0" step="100" placeholder="5000">
+                  <span class="input-group-text">₽</span>
+                </div>
+              </fieldset>
+
+              <div class="form-check form-switch mb-3">
+                <input id="only-new" name="only-new" class="form-check-input" type="checkbox" role="switch">
+                <label class="form-check-label" for="only-new">Только новинки</label>
+              </div>
+
+              <div class="d-grid gap-2">
+                <button class="btn btn-primary d-lg-none" type="submit">Показать товары</button>
+                <button class="btn btn-outline-secondary" type="reset">Сбросить фильтры</button>
+              </div>
+            </form>
+          </div>
+        </aside>
       </div>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <img class="card-img-top" src="images/kroxi.webp" alt="Жёлтые сабо с логотипом 1С">
-          <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h2 class="card-title h5">Сабо «1С»</h2>
-              <span class="badge bg-success">Новинка</span>
-            </div>
-            <p class="card-text text-muted">
-              Лёгкие жёлтые сабо для дома, сада и прогулок.
-            </p>
-            <p class="fw-bold fs-5 mt-auto">1500 руб.</p>
-            <div class="d-flex gap-2">
-              <a class="btn btn-primary" href="product.html">Подробнее</a>
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#orderModal"
-                data-product="product-2"
-              >
-                Заказать
-              </button>
+      <div class="col-12 col-lg-9">
+        <div class="alert alert-warning d-none" id="empty-message" role="alert">
+          По выбранным фильтрам товаров не найдено. Попробуйте изменить условия.
+        </div>
+
+        <div class="row g-4" id="products-list">
+          <div
+            class="col-12 col-md-6 col-xl-4"
+            data-category="slippers"
+            data-price="1000"
+            data-new="false"
+            data-order="1"
+          >
+            <div class="card h-100 shadow-sm">
+              <img class="card-img-top" src="images/tapchan.webp" alt="Жёлтые меховые тапочки с логотипом 1С">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h2 class="card-title h5">Тапочки меховые «1С»</h2>
+                  <span class="badge bg-warning text-dark">Хит</span>
+                </div>
+                <p class="card-text text-muted">
+                  Тёплые жёлтые тапочки из войлока с вышитым логотипом.
+                </p>
+                <p class="fw-bold fs-5 mt-auto">1000 руб.</p>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="product.html">Подробнее</a>
+                  <button
+                    class="btn btn-outline-primary"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#orderModal"
+                    data-product="product-1"
+                  >
+                    Заказать
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <img class="card-img-top" src="images/sapogi.webp" alt="Жёлтые резиновые сапоги с логотипом 1С">
-          <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h2 class="card-title h5">Резиновые сапоги «1С»</h2>
-              <span class="badge bg-danger">Скидка</span>
-            </div>
-            <p class="card-text text-muted">
-              Яркие непромокаемые сапоги для дождливой погоды.
-            </p>
-            <p class="fw-bold fs-5 mt-auto">2000 руб.</p>
-            <div class="d-flex gap-2">
-              <a class="btn btn-primary" href="product.html">Подробнее</a>
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#orderModal"
-                data-product="product-3"
-              >
-                Заказать
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <img class="card-img-top" src="images/tapchan2.webp" alt="Серые меховые тапочки с логотипом 1С">
-          <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h2 class="card-title h5">Тапочки серые «1С»</h2>
-            </div>
-            <p class="card-text text-muted">
-              Мягкие серые тапочки с меховой подкладкой.
-            </p>
-            <p class="fw-bold fs-5 mt-auto">1200 руб.</p>
-            <div class="d-flex gap-2">
-              <a class="btn btn-primary" href="product.html">Подробнее</a>
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#orderModal"
-                data-product="product-4"
-              >
-                Заказать
-              </button>
+          <div
+            class="col-12 col-md-6 col-xl-4"
+            data-category="shoes"
+            data-price="1500"
+            data-new="true"
+            data-order="2"
+          >
+            <div class="card h-100 shadow-sm">
+              <img class="card-img-top" src="images/kroxi.webp" alt="Жёлтые сабо с логотипом 1С">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h2 class="card-title h5">Сабо «1С»</h2>
+                  <span class="badge bg-success">Новинка</span>
+                </div>
+                <p class="card-text text-muted">
+                  Лёгкие жёлтые сабо для дома, сада и прогулок.
+                </p>
+                <p class="fw-bold fs-5 mt-auto">1500 руб.</p>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="product.html">Подробнее</a>
+                  <button
+                    class="btn btn-outline-primary"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#orderModal"
+                    data-product="product-2"
+                  >
+                    Заказать
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <img class="card-img-top" src="images/noski.webp" alt="Чёрные носки с логотипом 1С">
-          <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h2 class="card-title h5">Носки чёрные «1С»</h2>
-              <span class="badge bg-success">Новинка</span>
-            </div>
-            <p class="card-text text-muted">
-              Хлопковые носки с жёлтым логотипом на каждый день.
-            </p>
-            <p class="fw-bold fs-5 mt-auto">500 руб.</p>
-            <div class="d-flex gap-2">
-              <a class="btn btn-primary" href="product.html">Подробнее</a>
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#orderModal"
-                data-product="product-5"
-              >
-                Заказать
-              </button>
+          <div
+            class="col-12 col-md-6 col-xl-4"
+            data-category="shoes"
+            data-price="2000"
+            data-new="false"
+            data-order="3"
+          >
+            <div class="card h-100 shadow-sm">
+              <img class="card-img-top" src="images/sapogi.webp" alt="Жёлтые резиновые сапоги с логотипом 1С">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h2 class="card-title h5">Резиновые сапоги «1С»</h2>
+                  <span class="badge bg-danger">Скидка</span>
+                </div>
+                <p class="card-text text-muted">
+                  Яркие непромокаемые сапоги для дождливой погоды.
+                </p>
+                <p class="fw-bold fs-5 mt-auto">
+                2000 руб.
+                <span class="fs-6 fw-normal text-muted text-decoration-line-through ms-2">2500 руб.</span>
+              </p>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="product.html">Подробнее</a>
+                  <button
+                    class="btn btn-outline-primary"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#orderModal"
+                    data-product="product-3"
+                  >
+                    Заказать
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card h-100 shadow-sm">
-          <img class="card-img-top" src="images/noski2.webp" alt="Белые носки с красными полосками и логотипом 1С">
-          <div class="card-body d-flex flex-column">
-            <div class="d-flex justify-content-between align-items-start mb-3">
-              <h2 class="card-title h5">Носки в полоску «1С»</h2>
+          <div
+            class="col-12 col-md-6 col-xl-4"
+            data-category="slippers"
+            data-price="1200"
+            data-new="false"
+            data-order="4"
+          >
+            <div class="card h-100 shadow-sm">
+              <img class="card-img-top" src="images/tapchan2.webp" alt="Серые меховые тапочки с логотипом 1С">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h2 class="card-title h5">Тапочки серые «1С»</h2>
+                </div>
+                <p class="card-text text-muted">
+                  Мягкие серые тапочки с меховой подкладкой.
+                </p>
+                <p class="fw-bold fs-5 mt-auto">1200 руб.</p>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="product.html">Подробнее</a>
+                  <button
+                    class="btn btn-outline-primary"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#orderModal"
+                    data-product="product-4"
+                  >
+                    Заказать
+                  </button>
+                </div>
+              </div>
             </div>
-            <p class="card-text text-muted">
-              Белые носки с красными полосками в спортивном стиле.
-            </p>
-            <p class="fw-bold fs-5 mt-auto">600 руб.</p>
-            <div class="d-flex gap-2">
-              <a class="btn btn-primary" href="product.html">Подробнее</a>
-              <button
-                class="btn btn-outline-primary"
-                type="button"
-                data-bs-toggle="modal"
-                data-bs-target="#orderModal"
-                data-product="product-6"
-              >
-                Заказать
-              </button>
+          </div>
+          <div
+            class="col-12 col-md-6 col-xl-4"
+            data-category="socks"
+            data-price="500"
+            data-new="true"
+            data-order="5"
+          >
+            <div class="card h-100 shadow-sm">
+              <img class="card-img-top" src="images/noski.webp" alt="Чёрные носки с логотипом 1С">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h2 class="card-title h5">Носки чёрные «1С»</h2>
+                  <span class="badge bg-success">Новинка</span>
+                </div>
+                <p class="card-text text-muted">
+                  Хлопковые носки с жёлтым логотипом на каждый день.
+                </p>
+                <p class="fw-bold fs-5 mt-auto">500 руб.</p>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="product.html">Подробнее</a>
+                  <button
+                    class="btn btn-outline-primary"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#orderModal"
+                    data-product="product-5"
+                  >
+                    Заказать
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="col-12 col-md-6 col-xl-4"
+            data-category="socks"
+            data-price="600"
+            data-new="false"
+            data-order="6"
+          >
+            <div class="card h-100 shadow-sm">
+              <img class="card-img-top" src="images/noski2.webp" alt="Белые носки с красными полосками и логотипом 1С">
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-3">
+                  <h2 class="card-title h5">Носки в полоску «1С»</h2>
+                </div>
+                <p class="card-text text-muted">
+                  Белые носки с красными полосками в спортивном стиле.
+                </p>
+                <p class="fw-bold fs-5 mt-auto">600 руб.</p>
+                <div class="d-flex gap-2">
+                  <a class="btn btn-primary" href="product.html">Подробнее</a>
+                  <button
+                    class="btn btn-outline-primary"
+                    type="button"
+                    data-bs-toggle="modal"
+                    data-bs-target="#orderModal"
+                    data-product="product-6"
+                  >
+                    Заказать
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -369,5 +493,6 @@
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="js/validation.js"></script>
   <script src="js/order-modal.js"></script>
+  <script src="js/catalog-filters.js"></script>
 </body>
 </html>
