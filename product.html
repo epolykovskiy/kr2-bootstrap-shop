@@ -76,21 +76,64 @@
         </div>
       </div>
       <div class="col-12 col-lg-6">
-        <span class="badge bg-warning text-dark mb-3">Хит</span>
+        <div class="d-flex flex-wrap gap-2 mb-3">
+          <span class="badge bg-warning text-dark">Хит</span>
+          <span class="badge text-bg-light border">Домашняя обувь</span>
+        </div>
         <h1 class="h2">Тапочки меховые «1С»</h1>
         <p class="lead text-muted">
           Тёплые домашние тапочки из войлока с мягкой меховой подкладкой
           и вышитым логотипом. Подходят для дома и офиса.
         </p>
         <p class="fs-3 fw-bold">1000 руб.</p>
-        <div class="d-flex flex-wrap gap-2 mb-4">
-          <a class="btn btn-primary btn-lg" href="order.html?product=product-1">
-            Оформить заявку
-          </a>
-          <a class="btn btn-outline-secondary btn-lg" href="catalog.html">
-            Назад в каталог
-          </a>
-        </div>
+
+        <form id="product-form" action="order.html" method="get">
+          <input type="hidden" name="product" value="product-1">
+
+          <fieldset class="mb-3">
+            <legend class="fs-6 fw-semibold">Размер</legend>
+            <div class="btn-group flex-wrap" role="group" aria-label="Выбор размера">
+              <input type="radio" class="btn-check" name="size" id="size-36" value="36-37" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="size-36">36-37</label>
+
+              <input type="radio" class="btn-check" name="size" id="size-38" value="38-39" autocomplete="off" checked>
+              <label class="btn btn-outline-secondary" for="size-38">38-39</label>
+
+              <input type="radio" class="btn-check" name="size" id="size-40" value="40-41" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="size-40">40-41</label>
+
+              <input type="radio" class="btn-check" name="size" id="size-42" value="42-43" autocomplete="off">
+              <label class="btn btn-outline-secondary" for="size-42">42-43</label>
+            </div>
+          </fieldset>
+
+          <div class="mb-4">
+            <label class="form-label fw-semibold" for="product-quantity">Количество</label>
+            <div class="input-group quantity-group">
+              <button class="btn btn-outline-secondary" type="button" id="quantity-minus" aria-label="Уменьшить количество">−</button>
+              <input
+                id="product-quantity"
+                name="quantity"
+                class="form-control text-center"
+                type="number"
+                min="1"
+                max="10"
+                value="1"
+              >
+              <button class="btn btn-outline-secondary" type="button" id="quantity-plus" aria-label="Увеличить количество">+</button>
+            </div>
+          </div>
+
+          <div class="d-flex flex-wrap gap-2 mb-4">
+            <button class="btn btn-primary btn-lg" type="submit">
+              Оформить заявку
+            </button>
+            <a class="btn btn-outline-secondary btn-lg" href="catalog.html">
+              Назад в каталог
+            </a>
+          </div>
+        </form>
+
         <div class="alert alert-warning" role="alert">
           Это учебная карточка товара. Данные используются для демонстрации Bootstrap-компонентов.
         </div>
@@ -98,36 +141,130 @@
     </div>
 
     <section class="mt-5">
-      <h2 class="h4 mb-3">Характеристики</h2>
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered align-middle">
-          <tbody>
-            <tr>
-              <th scope="row">Категория</th>
-              <td>Домашняя обувь</td>
-            </tr>
-            <tr>
-              <th scope="row">Размеры</th>
-              <td>36-37, 38-39, 40-41, 42-43</td>
-            </tr>
-            <tr>
-              <th scope="row">Материал</th>
-              <td>Войлок</td>
-            </tr>
-            <tr>
-              <th scope="row">Цвет</th>
-              <td>Жёлтый</td>
-            </tr>
-            <tr>
-              <th scope="row">Цена</th>
-              <td>1000 руб.</td>
-            </tr>
-            <tr>
-              <th scope="row">Наличие</th>
-              <td>В наличии</td>
-            </tr>
-          </tbody>
-        </table>
+      <ul class="nav nav-tabs" id="productTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link active"
+            id="description-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#description-pane"
+            type="button"
+            role="tab"
+            aria-controls="description-pane"
+            aria-selected="true"
+          >
+            Описание
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="specs-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#specs-pane"
+            type="button"
+            role="tab"
+            aria-controls="specs-pane"
+            aria-selected="false"
+          >
+            Характеристики
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button
+            class="nav-link"
+            id="delivery-tab"
+            data-bs-toggle="tab"
+            data-bs-target="#delivery-pane"
+            type="button"
+            role="tab"
+            aria-controls="delivery-pane"
+            aria-selected="false"
+          >
+            Доставка и оплата
+          </button>
+        </li>
+      </ul>
+      <div class="tab-content border border-top-0 rounded-bottom p-4" id="productTabsContent">
+        <div
+          class="tab-pane fade show active"
+          id="description-pane"
+          role="tabpanel"
+          aria-labelledby="description-tab"
+          tabindex="0"
+        >
+          <p>
+            Тапочки сшиты из плотного войлока, поэтому хорошо держат форму и сохраняют тепло.
+            Внутри — мягкая меховая подкладка, снаружи — вышитый логотип «1С».
+          </p>
+          <p class="mb-0">
+            Нескользящая подошва подходит для ламината, плитки и паркета.
+          </p>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="specs-pane"
+          role="tabpanel"
+          aria-labelledby="specs-tab"
+          tabindex="0"
+        >
+          <div class="table-responsive">
+            <table class="table table-striped table-bordered align-middle mb-0">
+              <caption class="visually-hidden">Характеристики товара</caption>
+              <tbody>
+                <tr>
+                  <th scope="row">Категория</th>
+                  <td>Домашняя обувь</td>
+                </tr>
+                <tr>
+                  <th scope="row">Размеры</th>
+                  <td>36-37, 38-39, 40-41, 42-43</td>
+                </tr>
+                <tr>
+                  <th scope="row">Материал</th>
+                  <td>Войлок</td>
+                </tr>
+                <tr>
+                  <th scope="row">Цвет</th>
+                  <td>Жёлтый</td>
+                </tr>
+                <tr>
+                  <th scope="row">Цена</th>
+                  <td>1000 руб.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Наличие</th>
+                  <td><span class="badge bg-success">В наличии</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="delivery-pane"
+          role="tabpanel"
+          aria-labelledby="delivery-tab"
+          tabindex="0"
+        >
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+              Самовывоз из магазина
+              <span class="badge bg-success rounded-pill">Бесплатно</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+              Курьером по городу
+              <span class="badge bg-secondary rounded-pill">300 руб.</span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center px-0">
+              Почтой России
+              <span class="badge bg-secondary rounded-pill">от 350 руб.</span>
+            </li>
+            <li class="list-group-item px-0">
+              Оплата при получении: наличными или картой.
+            </li>
+          </ul>
+        </div>
       </div>
     </section>
 
@@ -205,6 +342,42 @@
         </div>
       </div>
     </section>
+
+    <section class="mt-5">
+      <h2 class="h4 mb-3">Похожие товары</h2>
+      <div class="row g-4">
+        <div class="col-12 col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="images/tapchan2.webp" alt="Серые меховые тапочки с логотипом 1С">
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title h6">Тапочки серые «1С»</h3>
+              <p class="fw-bold mt-auto mb-2">1200 руб.</p>
+              <a class="btn btn-sm btn-outline-primary stretched-link" href="order.html?product=product-4">Заказать</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="images/kroxi.webp" alt="Жёлтые сабо с логотипом 1С">
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title h6">Сабо «1С»</h3>
+              <p class="fw-bold mt-auto mb-2">1500 руб.</p>
+              <a class="btn btn-sm btn-outline-primary stretched-link" href="order.html?product=product-2">Заказать</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img class="card-img-top" src="images/noski.webp" alt="Чёрные носки с логотипом 1С">
+            <div class="card-body d-flex flex-column">
+              <h3 class="card-title h6">Носки чёрные «1С»</h3>
+              <p class="fw-bold mt-auto mb-2">500 руб.</p>
+              <a class="btn btn-sm btn-outline-primary stretched-link" href="order.html?product=product-5">Заказать</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer class="bg-dark text-white py-4 mt-5">
@@ -223,5 +396,6 @@
   </footer>
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/product-page.js"></script>
 </body>
 </html>
