@@ -78,7 +78,10 @@
             <div class="alert alert-info" role="alert">
               Заполните форму. Поля со звёздочкой являются обязательными.
             </div>
-            <form id="order-form" action="#" method="post">
+            <div class="alert alert-success d-none" id="success-message" role="alert">
+              Заявка успешно отправлена! Менеджер свяжется с вами в ближайшее время.
+            </div>
+            <form id="order-form" action="#" method="post" novalidate>
               <div class="row g-3">
                 <div class="col-12 col-md-6">
                   <label for="order-name" class="form-label">Имя *</label>
@@ -92,6 +95,7 @@
                     autocomplete="given-name"
                     required
                   >
+                  <div class="invalid-feedback">Введите имя, минимум 2 символа.</div>
                 </div>
                 <div class="col-12 col-md-6">
                   <label for="order-email" class="form-label">E-mail *</label>
@@ -104,10 +108,11 @@
                     autocomplete="email"
                     required
                   >
+                  <div class="invalid-feedback">Введите корректный e-mail.</div>
                 </div>
                 <div class="col-12 col-md-6">
                   <label for="order-phone" class="form-label">Телефон *</label>
-                  <div class="input-group">
+                  <div class="input-group has-validation">
                     <span class="input-group-text">+7</span>
                     <input
                       id="order-phone"
@@ -116,8 +121,10 @@
                       class="form-control"
                       inputmode="tel"
                       placeholder="900 000-00-00"
+                      pattern="^\d{3} \d{3}-\d{2}-\d{2}$"
                       required
                     >
+                    <div class="invalid-feedback">Формат: 900 000-00-00.</div>
                   </div>
                 </div>
                 <div class="col-12 col-md-6">
@@ -131,6 +138,22 @@
                     <option value="product-5">Носки чёрные «1С»</option>
                     <option value="product-6">Носки в полоску «1С»</option>
                   </select>
+                  <div class="invalid-feedback">Выберите товар.</div>
+                </div>
+                <div class="col-12">
+                  <p class="form-label mb-2">Удобный способ связи</p>
+                  <div class="form-check form-check-inline">
+                    <input id="contact-phone" name="contact" class="form-check-input" type="radio" value="phone" checked>
+                    <label class="form-check-label" for="contact-phone">Звонок</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input id="contact-email" name="contact" class="form-check-input" type="radio" value="email">
+                    <label class="form-check-label" for="contact-email">E-mail</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input id="contact-messenger" name="contact" class="form-check-input" type="radio" value="messenger">
+                    <label class="form-check-label" for="contact-messenger">Мессенджер</label>
+                  </div>
                 </div>
                 <div class="col-12">
                   <label for="order-comment" class="form-label">Комментарий</label>
@@ -148,6 +171,7 @@
                     <label class="form-check-label" for="order-agree">
                       Я согласен на обработку данных *
                     </label>
+                    <div class="invalid-feedback">Необходимо согласие на обработку данных.</div>
                   </div>
                 </div>
                 <div class="col-12 d-flex flex-wrap gap-2">
@@ -182,5 +206,7 @@
   </footer>
 
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/order-page.js"></script>
 </body>
 </html>
